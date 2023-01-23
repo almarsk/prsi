@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            :root {
+                --rotate: rotateX(50deg)
+            }
+            .plane {             
+                width: 100px;
+                height: 100px;
+                border: 1px solid orange;
+                
+                transform: var(--rotate) ;
+                text-align: center;
+                line-height: 100px;
+
+            }
+            .home {
+                width: 200px;
+                height: 200px;
+                border: 1px solid pink;
+                perspective: 1000px;
+                display: flex;
+                justify-content: center;
+                align-items: center;               
+            }
+            .valueChange {
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="home">   
+        </div>
+            <input class="valueChange" type="range">
+
+            <script type="text/javascript">
+
+                function renderRect () {
+                const home = document.getElementsByClassName("home")
+                let plane = document.createElement("div")
+                home[0].appendChild(plane)
+                plane.className = "plane"
+                plane.innerHTML = "plane"
+                }
+
+                renderRect()
+
+                const rangeInput = document.getElementsByClassName("valueChange");
+                rangeInput[0].addEventListener("input", changeAngle);
+                function changeAngle () {
+
+                    const angle = event.target.value
+                    document.documentElement.style.setProperty('--rotate', "rotateX(" + angle + "deg)"); 
+                }
+            </script>
+        
+    </body>
+</html>
